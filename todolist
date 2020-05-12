@@ -1,0 +1,95 @@
+Select T.Descricao Turma, P.Descricao Procedimento, Count(IdProcedimento1) 
+  From TLancamento L left join TProcedimento P on (P.IdProcedimento = L.IdProcedimento1)
+					 left join TAluno        A on (A.IdAluno        = L.IdAluno)
+					 left join TTurma        T on (T.IdTurma        = A.Turma)	
+
+group by T.IdTurma, L.IdProcedimento1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+select ALUNOS, 
+       count(L.rowid) as qtdeProcedimentoArtExecutado, 
+	   T.Descricao    as NomeTurma, 
+	   cpo, sum(art0) as numeroNecessarioARTCOP, 
+       ceo, sum(art1) as numeroNecessarioARTCEO 
+  from TAluno as A left join TTurma      T on (A.Turma = T.IdTurma)
+		           left join TLancamento L on (A.IdAluno = L.IdAluno) 
+ where L.IdProcedimento1 = 9
+group by Turma 
+
+select ALUNOS, E.Descricao as NomeEscola,                              
+       count(L.rowid) as qtdeProcedimentoArtExecutado,                 
+	   T.Descricao    as NomeTurma,                                    
+	   sum(cpo) as somaCOP, sum(art0) as numeroNecessarioARTCOP,       
+       sum(ceo) as somaCEO, sum(art1) as numeroNecessarioARTCEO        
+  from TAluno as A left join TTurma      T on (A.Turma    = T.IdTurma) 
+		           left join TLancamento L on (A.IdAluno  = L.IdAluno) 
+		           left join TEscola     E on (E.IdEscola = T.IdEscola)
+
+ where L.IdProcedimento1 = 9                                           
+group by Turma 						                                   
+
+select ALUNOS,    a.cpo,                         
+       (select count(rowid) from TLancamento) as qtdeLCT            
+	   T.Descricao    as NomeTurma,                                    
+	   sum(A.cpo) as somaCOP, sum(art0) as numeroNecessarioARTCOP,       
+       sum(A.ceo) as somaCEO, sum(art1) as numeroNecessarioARTCEO        
+  from TAluno as A left join TTurma      T on (A.Turma    = T.IdTurma) 
+		          
+		          
+where T.IdTurma = 1                                   
+group by T.IdTurma 		
+
+
+
+ select ALUNOS,                                                          
+ (select count(LANC.rowid) from TLancamento LANC join TAluno ALU on (ALU.IdAluno = LANC.IdAluno) WHERE ALU.Turma = T.IdTurma) as qtdeLCT,
+					  E.Descricao as NomeEscola,                            
+                      
+ 	   T.Descricao    as NomeTurma,                                     
+ 	   sum(cpo) as somaCOP, sum(art0) as numeroNecessarioARTCOP,        
+        sum(ceo) as somaCEO, sum(art1) as numeroNecessarioARTCEO         
+   from TAluno as A left join TTurma      T on (A.Turma    = T.IdTurma)  
+  		           
+ 		           left join TEscola     E on (E.IdEscola = T.IdEscola) 
+
+                                   
+ group by Turma 						                                    

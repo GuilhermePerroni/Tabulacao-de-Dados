@@ -1,0 +1,161 @@
+
+	
+			var idProcedimento1        = document.getElementById('comboProcedimentos1').selectedIndex  + 1;
+			var idProcedimento2        = document.getElementById('comboProcedimentos2').selectedIndex  + 1;
+			var idProcedimento3        = document.getElementById('comboProcedimentos3').selectedIndex  + 1;
+			var idProcedimento4        = document.getElementById('comboProcedimentos4').selectedIndex  + 1;
+		
+
+
+var datalancamento                  = document.getElementById('datalancamento').value;
+
+
+
+function formataData(data){
+	//2017-06-15
+	
+	var xdata = data;
+	
+	var ano = xdata.substring(0, [4]);
+	var mes = xdata.substring(6, [7]);
+	var dia = xdata.substring(8, [10]);
+	
+	if (dia.length==1) {
+		dia = '0'+dia;		
+	}
+	if (mes.length==1) {
+		mes = '0'+mes;		
+	}
+	
+	var xdata = dia+'/'+mes+'/'+ano;
+	
+	return xdata;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var turma = document.getElementById('comboTurma').selectedIndex    + 1;
+			
+
+
+IdLancamento 
+idAluno 
+descricaoAluno 
+nomePaciente
+idProcedimento 
+descricaoProcedimento
+nota 
+obs
+
+IdLancamento, idAluno, descricaoAluno, nomePaciente, idProcedimento, descricaoProcedimento, nota, obs
+
+IdLancamento, idAluno = ?, descricaoAluno = ?, nomePaciente = ?, idProcedimento = ?, descricaoProcedimento = ?, nota = ?, obs = ?
+
+
+			var idAluno               = document.getElementById('idAluno').value;
+			var descricaoAluno        = document.getElementById('descricaoAluno').value;
+			var nomePaciente          = document.getElementById('nomePaciente').value;
+			var idProcedimento        = document.getElementById('idProcedimento').value;
+			var descricaoProcedimento = document.getElementById('descricaoProcedimento').value;
+			var nota                  = document.getElementById('nota').value;
+			var obs                   = document.getElementById('obs').value;
+			
+	
+<div id="listaAlunos"   name="listaAlunos"> </div>
+
+montaComboAluno(); colocar no criabanco
+
+function montaComboAluno() {
+	banco.transaction(function (tx) {
+		tx.executeSql('select * from TAluno ',
+		[],
+		function (tx, results) {
+			var tamanho = results.rows.length;
+			var listaAlunos = document.getElementById('listaAlunos');
+			
+			listaAlunos.innerHTML = " ";
+			
+			var corpo;
+			var i;
+			var item = null;
+	
+			cabecalho = '<div class="input-field col s12">'+
+						'<select class="uppercase" id="comboAlunos" name="comboAlunos"> ';
+	
+							
+			for(i=0; i < tamanho; i++) {
+				item = results.rows.item(i);
+				
+				
+			corpo =  corpo + ' <option value="' + item['IdAluno'] + '">' + item['Descricao'] + ' </option> ';
+					
+			}
+			
+			rodape = ' </select> </div> ';
+			
+			listaAlunos.innerHTML += cabecalho + corpo + rodape;
+			
+			
+			$(document).ready(function(){
+				$('select').formSelect();
+			});	
+			
+			},	
+		seDerErro);
+	});
+}
+
+
+
+
+tx.executeSql('select a.*,  b.Nome as Dentista, c.Descricao TipoServico, d.Descricao as NCor, e.Descricao as NEscala             '+
+					  'from TLancamento as a LEFT JOIN TDentista    as b on (a.IdDentista = b.IdDentista)      '+
+					  '                      LEFT JOIN TTipoServico as c on (a.IdServico  = c.IdTipoServico)     '+
+					  '                      LEFT JOIN TCor         as d on (a.Cor        = d.IdCor)     '+
+					  '                      LEFT JOIN TEscala      as e on (a.Escala     = e.IdEscala)     '+
+					  'where Concluido = "N"',
+					  
+					  
+					  
+					  
+					  
+					  
+					  
+					  
+tx.executeSql('select A.*, T.Descricao as NomeTurma from TAluno as A left join TTurma as T on (A.turma = T.IdTurma)',
+
+
+
+		
+		
+		
+		
+		
+		
+		
+		
+	

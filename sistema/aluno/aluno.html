@@ -1,0 +1,1041 @@
+<!DOCTYPE HTML>
+<HTML lang="pt-br">
+	<HEAD>
+		<meta charset=utf-8>
+		<title> ProDados - Tabulação de Dados Epidemiológicos  </title>
+		
+		<!--Import Google Icon Font-->
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        
+		<link rel="stylesheet" type="text/css" href="css/materialize.css">
+		<link rel="stylesheet" type="text/css" href="css/custom.css">
+		
+		
+		<!--<link rel="stylesheet" type="text/css" href="Style.css">-->
+		<script type="text/javascript" src="../../js/codigo.js"></script>
+		
+		<script type="text/javascript" src="js/codigo.js"></script>
+		
+	</HEAD>
+	<BODY  onload="criarAbrirBanco()">
+		<div class="row" >
+				<!-- Campos-->	
+				<div class="row " >
+				<div class="col s12 boxformulario" id="esconde">
+					<h5 class="center-align" > Cadastro de Alunos </h5>
+					<div class="row" >
+					
+						<div id="listaEscolas"   name="listaEscolas"> </div>
+						<div id="listaTurmas"   name="listaTurmas"> </div>
+					
+						
+						<div class="input-field col s1">
+							<input disabled type="text" id="idAluno" placeholder="">	
+							<label for="idAluno"> N Aluno </label>
+						</div>
+						
+						<div class="input-field col s5 ">
+							<input data-length="50" class="uppercase" type="text" id="ALUNO" placeholder="Insira o Nome do Aluno">	
+							<label for="Aluno"> Aluno </label>
+						</div>
+						
+						
+						<div class="input-field col s3">
+							<input data-length="50" class="uppercase" type="text" id="CNS" placeholder="Insira o CNS">	
+							<label for="CNS"> CNS </label>
+						</div>
+						
+						
+						
+						<div class="input-field col s2">
+						<select id="SEXO" name="SEXO">
+							<option value="MASCULINO">MASCULINO</option>
+							<option value="FEMININO">FEMININO</option>
+							
+						</select>
+							<label>Sexo</label>
+						</div>
+						
+						<div class="input-field col s2">
+							<input data-length="50" class="uppercase" type="text" id="IDADE" placeholder="Insira a idade">	
+							<label for="Idade"> Idade </label>
+						</div>
+						
+						<div class="input-field col s2">
+							<input data-length="50" class="uppercase" type="date" id="DataNascimento" placeholder="Insira a Data de Nascimento">	
+							<label for="DataNascimento"> DataNascimento </label>
+						</div>
+						
+						<div class="input-field col s3">
+							<input data-length="50" class="uppercase" type="text" id="Endereco" placeholder="Insira o Endereco">	
+							<label for="Endereco"> Endereco </label>
+						</div>
+						
+						<div class="input-field col s2">
+							<input data-length="50" class="uppercase" type="text" id="Telefone" placeholder="Insira o Telefone">	
+							<label for="Telefone"> Telefone </label>
+						</div>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						<div class="input-field col s2">
+							<input data-length="50" class="uppercase" type="text" id="CPO" placeholder="Insira o CPO">	
+							<label for="CPO"> CPO </label>
+						</div>
+						
+						
+						<div class="input-field col s2">
+							<input data-length="50" class="uppercase" type="text" id="ART0" placeholder="Insira o ART">	
+							<label for="ART0"> ART </label>
+						</div>
+						
+						<div class="input-field col s2">
+							<input data-length="50" class="uppercase" type="text" id="CEO" placeholder="Insira o CEO">	
+							<label for="CEO"> CEO </label>
+						</div>
+						
+						<div class="input-field col s2">
+							<input data-length="50" class="uppercase" type="text" id="ART1" placeholder="Insira o ART">	
+							<label for="ART1"> ART </label>
+						</div>
+						
+						<div class="input-field col s1">
+							<select id="RISCO" name="RISCO">
+							<option value="ALTO">R1</option>
+							<option value="MEDIO">R2</option>
+							<option value="BAIXO">R3</option>
+							</select>
+							<label>Risco</label>
+						</div>
+						
+						<div class="input-field col s1">
+							<select id="ClassRisco" name="ClassRisco">
+							<option value="0">0</option>
+							<option value="3">G3</option>
+							<option value="2">G2</option>
+							<option value="1">G1</option>
+							</select>
+							<label>Class. Risco</label>
+						</div>
+						
+											
+						
+						
+						
+						
+						<div class="input-field col s2">
+							<select id="Encaminhado" name="Encaminhado">
+							<option value="NAO">NAO</option>
+							<option value="SIM">SIM</option>
+							
+							</select>
+							<label>Enc. Fasipe</label>
+						</div>
+						
+						<div class="input-field col s2">
+							<select id="Autorizado" name="Autorizado">
+							<option value="SIM">SIM</option>
+							<option value="NAO">NAO</option>
+							</select>
+							<label>Autorizado</label>
+						</div>
+						
+						<div class="input-field col s2">
+							<select id="Colaborativo" name="Colaborativo">
+							<option value="SIM">SIM</option>
+							<option value="NAO">NAO</option>
+							</select>
+							<label>Colaborativo</label>
+						</div>
+						
+						
+						<div class="input-field col s2">
+							<input data-length="50" class="uppercase" type="text" id="Observacao" placeholder="Insira a Observacao">	
+							<label for="Observacao"> Observacao </label>
+						</div>
+						
+					
+					</div>
+					
+				</div >
+			</div>
+		
+				<!-- odontograma-->	
+				<div class="">
+					
+					<!-- Pediatria -->
+					<div class="row boxformulario">	
+						<h5 class="center-align"> Odontograma 55-85 </h5>
+						<!-- dente de 55 a 65-->
+						<div class="row " >
+							<div class="input-field col s1">
+								
+							</div>
+							
+							<div class="input-field col s1">
+								<select id="dente55">
+									<option value="A">A - H    </option> 
+									<option value="B">B - C    </option>
+									<option value="C">C - R.C.C</option>
+									<option value="D">D - R.S.C</option>
+									<option value="E">E - A.D.C</option>
+									<option value="F">F - S    </option>
+									<option value="G">G - P.P.C</option>
+									<option value="T">T - T    </option>
+								</select>
+								<label>Dente 55</label>
+							</div>
+							
+							<div class="input-field col s1">
+								<select id="dente54">
+									<option value="A">A - H    </option> 
+									<option value="B">B - C    </option>
+									<option value="C">C - R.C.C</option>
+									<option value="D">D - R.S.C</option>
+									<option value="E">E - A.D.C</option>
+									<option value="F">F - S    </option>
+									<option value="G">G - P.P.C</option>
+									<option value="T">T - T    </option>
+								</select>
+								<label>Dente 54</label>
+							</div>
+							
+							<div class="input-field col s1">
+								<select id="dente53">
+									<option value="A">A - H    </option> 
+									<option value="B">B - C    </option>
+									<option value="C">C - R.C.C</option>
+									<option value="D">D - R.S.C</option>
+									<option value="E">E - A.D.C</option>
+									<option value="F">F - S    </option>
+									<option value="G">G - P.P.C</option>
+									<option value="T">T - T    </option>
+								</select>
+								<label>Dente 53</label>
+							</div>
+							
+							<div class="input-field col s1">
+								<select id="dente52">
+									<option value="A">A - H    </option> 
+									<option value="B">B - C    </option>
+									<option value="C">C - R.C.C</option>
+									<option value="D">D - R.S.C</option>
+									<option value="E">E - A.D.C</option>
+									<option value="F">F - S    </option>
+									<option value="G">G - P.P.C</option>
+									<option value="T">T - T    </option>
+								</select>
+								<label>Dente 52</label>
+							</div>
+							
+							<div class="input-field col s1">
+								<select id="dente51">
+									<option value="A">A - H    </option> 
+									<option value="B">B - C    </option>
+									<option value="C">C - R.C.C</option>
+									<option value="D">D - R.S.C</option>
+									<option value="E">E - A.D.C</option>
+									<option value="F">F - S    </option>
+									<option value="G">G - P.P.C</option>
+									<option value="T">T - T    </option>
+								</select>
+								<label>Dente 51</label>
+							</div>
+							
+							<div class="input-field col s1">
+								<select id="dente61">
+									<option value="A">A - H    </option> 
+									<option value="B">B - C    </option>
+									<option value="C">C - R.C.C</option>
+									<option value="D">D - R.S.C</option>
+									<option value="E">E - A.D.C</option>
+									<option value="F">F - S    </option>
+									<option value="G">G - P.P.C</option>
+									<option value="T">T - T    </option>
+								</select>
+								<label>Dente 61</label>
+							</div>
+							
+							<div class="input-field col s1">
+								<select id="dente62">
+									<option value="A">A - H    </option> 
+									<option value="B">B - C    </option>
+									<option value="C">C - R.C.C</option>
+									<option value="D">D - R.S.C</option>
+									<option value="E">E - A.D.C</option>
+									<option value="F">F - S    </option>
+									<option value="G">G - P.P.C</option>
+									<option value="T">T - T    </option>
+								</select>
+								<label>Dente 62</label>
+							</div>
+							
+							<div class="input-field col s1">
+								<select id="dente63">
+									<option value="A">A - H    </option> 
+									<option value="B">B - C    </option>
+									<option value="C">C - R.C.C</option>
+									<option value="D">D - R.S.C</option>
+									<option value="E">E - A.D.C</option>
+									<option value="F">F - S    </option>
+									<option value="G">G - P.P.C</option>
+									<option value="T">T - T    </option>
+								</select>
+								<label>Dente 63</label>
+							</div>
+							
+							<div class="input-field col s1">
+								<select id="dente64">
+									<option value="A">A - H    </option> 
+									<option value="B">B - C    </option>
+									<option value="C">C - R.C.C</option>
+									<option value="D">D - R.S.C</option>
+									<option value="E">E - A.D.C</option>
+									<option value="F">F - S    </option>
+									<option value="G">G - P.P.C</option>
+									<option value="T">T - T    </option>
+								</select>
+								<label>Dente 64</label>
+							</div>
+							
+							<div class="input-field col s1">
+								<select id="dente65">
+									<option value="A">A - H    </option> 
+									<option value="B">B - C    </option>
+									<option value="C">C - R.C.C</option>
+									<option value="D">D - R.S.C</option>
+									<option value="E">E - A.D.C</option>
+									<option value="F">F - S    </option>
+									<option value="G">G - P.P.C</option>
+									<option value="T">T - T    </option>
+								</select>
+								<label>Dente 65</label>
+							</div>
+						</div>
+						
+						<!-- dente de 85 a 75-->
+						<div class="row " >
+							<div class="input-field col s1">
+								
+							</div>
+							
+							<div class="input-field col s1">
+								<select id="dente85">
+									<option value="A">A - H    </option> 
+									<option value="B">B - C    </option>
+									<option value="C">C - R.C.C</option>
+									<option value="D">D - R.S.C</option>
+									<option value="E">E - A.D.C</option>
+									<option value="F">F - S    </option>
+									<option value="G">G - P.P.C</option>
+									<option value="T">T - T    </option>
+								</select>
+								<label>Dente 85</label>
+							</div>
+							
+							<div class="input-field col s1">
+								<select id="dente84">
+									<option value="A">A - H    </option> 
+									<option value="B">B - C    </option>
+									<option value="C">C - R.C.C</option>
+									<option value="D">D - R.S.C</option>
+									<option value="E">E - A.D.C</option>
+									<option value="F">F - S    </option>
+									<option value="G">G - P.P.C</option>
+									<option value="T">T - T    </option>
+								</select>
+								<label>Dente 84</label>
+							</div>
+							
+							<div class="input-field col s1">
+								<select id="dente83">
+									<option value="A">A - H    </option> 
+									<option value="B">B - C    </option>
+									<option value="C">C - R.C.C</option>
+									<option value="D">D - R.S.C</option>
+									<option value="E">E - A.D.C</option>
+									<option value="F">F - S    </option>
+									<option value="G">G - P.P.C</option>
+									<option value="T">T - T    </option>
+								</select>
+								<label>Dente 83</label>
+							</div>
+							
+							<div class="input-field col s1">
+								<select id="dente82">
+									<option value="A">A - H    </option> 
+									<option value="B">B - C    </option>
+									<option value="C">C - R.C.C</option>
+									<option value="D">D - R.S.C</option>
+									<option value="E">E - A.D.C</option>
+									<option value="F">F - S    </option>
+									<option value="G">G - P.P.C</option>
+									<option value="T">T - T    </option>
+								</select>
+								<label>Dente 82</label>
+							</div>
+							
+							<div class="input-field col s1">
+								<select id="dente81">
+									<option value="A">A - H    </option> 
+									<option value="B">B - C    </option>
+									<option value="C">C - R.C.C</option>
+									<option value="D">D - R.S.C</option>
+									<option value="E">E - A.D.C</option>
+									<option value="F">F - S    </option>
+									<option value="G">G - P.P.C</option>
+									<option value="T">T - T    </option>
+								</select>
+								<label>Dente 81</label>
+							</div>
+							
+							<div class="input-field col s1">
+								<select id="dente71">
+									<option value="A">A - H    </option> 
+									<option value="B">B - C    </option>
+									<option value="C">C - R.C.C</option>
+									<option value="D">D - R.S.C</option>
+									<option value="E">E - A.D.C</option>
+									<option value="F">F - S    </option>
+									<option value="G">G - P.P.C</option>
+									<option value="T">T - T    </option>
+								</select>
+								<label>Dente 71</label>
+							</div>
+							
+							<div class="input-field col s1">
+								<select id="dente72">
+									<option value="A">A - H    </option> 
+									<option value="B">B - C    </option>
+									<option value="C">C - R.C.C</option>
+									<option value="D">D - R.S.C</option>
+									<option value="E">E - A.D.C</option>
+									<option value="F">F - S    </option>
+									<option value="G">G - P.P.C</option>
+									<option value="T">T - T    </option>
+								</select>
+								<label>Dente 72</label>
+							</div>
+							
+							<div class="input-field col s1">
+								<select id="dente73">
+									<option value="A">A - H    </option> 
+									<option value="B">B - C    </option>
+									<option value="C">C - R.C.C</option>
+									<option value="D">D - R.S.C</option>
+									<option value="E">E - A.D.C</option>
+									<option value="F">F - S    </option>
+									<option value="G">G - P.P.C</option>
+									<option value="T">T - T    </option>
+								</select>
+								<label>Dente 73</label>
+							</div>
+							
+							<div class="input-field col s1">
+								<select id="dente74">
+									<option value="A">A - H    </option> 
+									<option value="B">B - C    </option>
+									<option value="C">C - R.C.C</option>
+									<option value="D">D - R.S.C</option>
+									<option value="E">E - A.D.C</option>
+									<option value="F">F - S    </option>
+									<option value="G">G - P.P.C</option>
+									<option value="T">T - T    </option>
+								</select>
+								<label>Dente 74</label>
+							</div>
+							
+							<div class="input-field col s1">
+								<select id="dente75">
+									<option value="A">A - H    </option> 
+									<option value="B">B - C    </option>
+									<option value="C">C - R.C.C</option>
+									<option value="D">D - R.S.C</option>
+									<option value="E">E - A.D.C</option>
+									<option value="F">F - S    </option>
+									<option value="G">G - P.P.C</option>
+									<option value="T">T - T    </option>
+								</select>
+								<label>Dente 75</label>
+							</div>
+						</div>
+						
+					</div>
+							
+					<!-- adulto -->
+					<div class="row boxformulario" >
+						<h5 class="center-align"> Odontograma 17-47 </h5>
+					
+						<!-- arcadasuperior-->		
+						<div>
+						<!-- 17 27-->
+						<div class="row">
+							<div class="input-field col s1">
+								<select id="dente17">
+								<option value="0">0 - H    </option>     
+								<option value="1">1 - C    </option>
+								<option value="2">2 - R.C.C</option>
+								<option value="3">3 - R.S.C</option>
+								<option value="4">4 - A.D.C</option>
+								<option value="5">5 - A.O.C</option>
+								<option value="6">6 - S    </option>
+								<option value="7">7 - P.P.C</option>
+								<option value="8">8 - N.E  </option>
+								<option value="9">9 - N.R  </option>
+								<option value="T">T - T    </option>
+								</select>
+								<label>Dente 17</label>
+							</div>
+							
+							<div class="col s10">
+							</div>
+							
+							<div class="input-field col s1">
+								<select id="dente27">
+								<option value="0">0 - H    </option>     
+								<option value="1">1 - C    </option>
+								<option value="2">2 - R.C.C</option>
+								<option value="3">3 - R.S.C</option>
+								<option value="4">4 - A.D.C</option>
+								<option value="5">5 - A.O.C</option>
+								<option value="6">6 - S    </option>
+								<option value="7">7 - P.P.C</option>
+								<option value="8">8 - N.E  </option>
+								<option value="9">9 - N.R  </option>
+								<option value="T">T - T    </option>
+								</select>
+								<label>Dente 27</label>
+							</div>
+						</div>
+						
+						
+						
+						<div class="row">
+							
+							<div class="input-field col s1">
+								<select id="dente16">
+								<option value="0">0 - H    </option>     
+								<option value="1">1 - C    </option>
+								<option value="2">2 - R.C.C</option>
+								<option value="3">3 - R.S.C</option>
+								<option value="4">4 - A.D.C</option>
+								<option value="5">5 - A.O.C</option>
+								<option value="6">6 - S    </option>
+								<option value="7">7 - P.P.C</option>
+								<option value="8">8 - N.E  </option>
+								<option value="9">9 - N.R  </option>
+								<option value="T">T - T    </option>
+								</select>
+								<label>Dente 16</label>
+							</div>
+							
+							<div class="input-field col s1">
+								<select id="dente15">
+								<option value="0">0 - H    </option>     
+								<option value="1">1 - C    </option>
+								<option value="2">2 - R.C.C</option>
+								<option value="3">3 - R.S.C</option>
+								<option value="4">4 - A.D.C</option>
+								<option value="5">5 - A.O.C</option>
+								<option value="6">6 - S    </option>
+								<option value="7">7 - P.P.C</option>
+								<option value="8">8 - N.E  </option>
+								<option value="9">9 - N.R  </option>
+								<option value="T">T - T    </option>
+								</select>
+								<label>Dente 15</label>
+							</div>
+							
+							<div class="input-field col s1">
+								<select id="dente14">
+								<option value="0">0 - H    </option>     
+								<option value="1">1 - C    </option>
+								<option value="2">2 - R.C.C</option>
+								<option value="3">3 - R.S.C</option>
+								<option value="4">4 - A.D.C</option>
+								<option value="5">5 - A.O.C</option>
+								<option value="6">6 - S    </option>
+								<option value="7">7 - P.P.C</option>
+								<option value="8">8 - N.E  </option>
+								<option value="9">9 - N.R  </option>
+								<option value="T">T - T    </option>
+								</select>
+								<label>Dente 14</label>
+							</div>
+							
+							
+							<div class="input-field col s1">
+								<select id="dente13">
+								<option value="0">0 - H    </option>     
+								<option value="1">1 - C    </option>
+								<option value="2">2 - R.C.C</option>
+								<option value="3">3 - R.S.C</option>
+								<option value="4">4 - A.D.C</option>
+								<option value="5">5 - A.O.C</option>
+								<option value="6">6 - S    </option>
+								<option value="7">7 - P.P.C</option>
+								<option value="8">8 - N.E  </option>
+								<option value="9">9 - N.R  </option>
+								<option value="T">T - T    </option>
+								</select>
+								<label>Dente 13</label>
+							</div>
+							
+							
+							<div class="input-field col s1">
+								<select id="dente12">
+								<option value="0">0 - H    </option>     
+								<option value="1">1 - C    </option>
+								<option value="2">2 - R.C.C</option>
+								<option value="3">3 - R.S.C</option>
+								<option value="4">4 - A.D.C</option>
+								<option value="5">5 - A.O.C</option>
+								<option value="6">6 - S    </option>
+								<option value="7">7 - P.P.C</option>
+								<option value="8">8 - N.E  </option>
+								<option value="9">9 - N.R  </option>
+								<option value="T">T - T    </option>
+								</select>
+								<label>Dente 12</label>
+							</div>
+							
+							<div class="input-field col s1">
+								<select id="dente11">
+								<option value="0">0 - H    </option>     
+								<option value="1">1 - C    </option>
+								<option value="2">2 - R.C.C</option>
+								<option value="3">3 - R.S.C</option>
+								<option value="4">4 - A.D.C</option>
+								<option value="5">5 - A.O.C</option>
+								<option value="6">6 - S    </option>
+								<option value="7">7 - P.P.C</option>
+								<option value="8">8 - N.E  </option>
+								<option value="9">9 - N.R  </option>
+								<option value="T">T - T    </option>
+								</select>
+								<label>Dente 11</label>
+							</div>
+							
+							<div class="input-field col s1">
+								<select id="dente21">
+								<option value="0">0 - H    </option>     
+								<option value="1">1 - C    </option>
+								<option value="2">2 - R.C.C</option>
+								<option value="3">3 - R.S.C</option>
+								<option value="4">4 - A.D.C</option>
+								<option value="5">5 - A.O.C</option>
+								<option value="6">6 - S    </option>
+								<option value="7">7 - P.P.C</option>
+								<option value="8">8 - N.E  </option>
+								<option value="9">9 - N.R  </option>
+								<option value="T">T - T    </option>
+								</select>
+								<label>Dente 21</label>
+							</div>
+							
+							<div class="input-field col s1">
+								<select id="dente22">
+								<option value="0">0 - H    </option>     
+								<option value="1">1 - C    </option>
+								<option value="2">2 - R.C.C</option>
+								<option value="3">3 - R.S.C</option>
+								<option value="4">4 - A.D.C</option>
+								<option value="5">5 - A.O.C</option>
+								<option value="6">6 - S    </option>
+								<option value="7">7 - P.P.C</option>
+								<option value="8">8 - N.E  </option>
+								<option value="9">9 - N.R  </option>
+								<option value="T">T - T    </option>
+								</select>
+								<label>Dente 22</label>
+							</div>
+							
+							<div class="input-field col s1">
+								<select id="dente23">
+								<option value="0">0 - H    </option>     
+								<option value="1">1 - C    </option>
+								<option value="2">2 - R.C.C</option>
+								<option value="3">3 - R.S.C</option>
+								<option value="4">4 - A.D.C</option>
+								<option value="5">5 - A.O.C</option>
+								<option value="6">6 - S    </option>
+								<option value="7">7 - P.P.C</option>
+								<option value="8">8 - N.E  </option>
+								<option value="9">9 - N.R  </option>
+								<option value="T">T - T    </option>
+								</select>
+								<label>Dente 23</label>
+							</div>
+							
+							<div class="input-field col s1">
+								<select id="dente24">
+								<option value="0">0 - H    </option>     
+								<option value="1">1 - C    </option>
+								<option value="2">2 - R.C.C</option>
+								<option value="3">3 - R.S.C</option>
+								<option value="4">4 - A.D.C</option>
+								<option value="5">5 - A.O.C</option>
+								<option value="6">6 - S    </option>
+								<option value="7">7 - P.P.C</option>
+								<option value="8">8 - N.E  </option>
+								<option value="9">9 - N.R  </option>
+								<option value="T">T - T    </option>
+								</select>
+								<label>Dente 24</label>
+							</div>
+							
+							
+							<div class="input-field col s1">
+								<select id="dente25">
+								<option value="0">0 - H    </option>     
+								<option value="1">1 - C    </option>
+								<option value="2">2 - R.C.C</option>
+								<option value="3">3 - R.S.C</option>
+								<option value="4">4 - A.D.C</option>
+								<option value="5">5 - A.O.C</option>
+								<option value="6">6 - S    </option>
+								<option value="7">7 - P.P.C</option>
+								<option value="8">8 - N.E  </option>
+								<option value="9">9 - N.R  </option>
+								<option value="T">T - T    </option>
+								</select>
+								<label>Dente 25</label>
+							</div>
+							
+							
+							<div class="input-field col s1">
+								<select id="dente26">
+								<option value="0">0 - H    </option>     
+								<option value="1">1 - C    </option>
+								<option value="2">2 - R.C.C</option>
+								<option value="3">3 - R.S.C</option>
+								<option value="4">4 - A.D.C</option>
+								<option value="5">5 - A.O.C</option>
+								<option value="6">6 - S    </option>
+								<option value="7">7 - P.P.C</option>
+								<option value="8">8 - N.E  </option>
+								<option value="9">9 - N.R  </option>
+								<option value="T">T - T    </option>
+								</select>
+								<label>Dente 26</label>
+							</div>
+							
+						</div>
+						
+					</div>	
+						
+						<!-- arcadainferior-->
+						<div>
+						
+						
+						
+						<div class="row col">
+							
+							<div class="input-field col s1">
+								<select id="dente46">
+								<option value="0">0 - H    </option>     
+								<option value="1">1 - C    </option>
+								<option value="2">2 - R.C.C</option>
+								<option value="3">3 - R.S.C</option>
+								<option value="4">4 - A.D.C</option>
+								<option value="5">5 - A.O.C</option>
+								<option value="6">6 - S    </option>
+								<option value="7">7 - P.P.C</option>
+								<option value="8">8 - N.E  </option>
+								<option value="9">9 - N.R  </option>
+								<option value="T">T - T    </option>
+								</select>
+								<label>Dente 46</label>
+							</div>
+							
+							<div class="input-field col s1">
+								<select id="dente45">
+								<option value="0">0 - H    </option>     
+								<option value="1">1 - C    </option>
+								<option value="2">2 - R.C.C</option>
+								<option value="3">3 - R.S.C</option>
+								<option value="4">4 - A.D.C</option>
+								<option value="5">5 - A.O.C</option>
+								<option value="6">6 - S    </option>
+								<option value="7">7 - P.P.C</option>
+								<option value="8">8 - N.E  </option>
+								<option value="9">9 - N.R  </option>
+								<option value="T">T - T    </option>
+								</select>
+								<label>Dente 45</label>
+							</div>
+							
+							<div class="input-field col s1">
+								<select id="dente44">
+								<option value="0">0 - H    </option>     
+								<option value="1">1 - C    </option>
+								<option value="2">2 - R.C.C</option>
+								<option value="3">3 - R.S.C</option>
+								<option value="4">4 - A.D.C</option>
+								<option value="5">5 - A.O.C</option>
+								<option value="6">6 - S    </option>
+								<option value="7">7 - P.P.C</option>
+								<option value="8">8 - N.E  </option>
+								<option value="9">9 - N.R  </option>
+								<option value="T">T - T    </option>
+								</select>
+								<label>Dente 44</label>
+							</div>
+							
+							
+							<div class="input-field col s1">
+								<select id="dente43">
+								<option value="0">0 - H    </option>     
+								<option value="1">1 - C    </option>
+								<option value="2">2 - R.C.C</option>
+								<option value="3">3 - R.S.C</option>
+								<option value="4">4 - A.D.C</option>
+								<option value="5">5 - A.O.C</option>
+								<option value="6">6 - S    </option>
+								<option value="7">7 - P.P.C</option>
+								<option value="8">8 - N.E  </option>
+								<option value="9">9 - N.R  </option>
+								<option value="T">T - T    </option>
+								</select>
+								<label>Dente 43</label>
+							</div>
+							
+							
+							<div class="input-field col s1">
+								<select id="dente42">
+								<option value="0">0 - H    </option>     
+								<option value="1">1 - C    </option>
+								<option value="2">2 - R.C.C</option>
+								<option value="3">3 - R.S.C</option>
+								<option value="4">4 - A.D.C</option>
+								<option value="5">5 - A.O.C</option>
+								<option value="6">6 - S    </option>
+								<option value="7">7 - P.P.C</option>
+								<option value="8">8 - N.E  </option>
+								<option value="9">9 - N.R  </option>
+								<option value="T">T - T    </option>
+								</select>
+								<label>Dente 42</label>
+							</div>
+							
+							<div class="input-field col s1">
+								<select id="dente41">
+								<option value="0">0 - H    </option>     
+								<option value="1">1 - C    </option>
+								<option value="2">2 - R.C.C</option>
+								<option value="3">3 - R.S.C</option>
+								<option value="4">4 - A.D.C</option>
+								<option value="5">5 - A.O.C</option>
+								<option value="6">6 - S    </option>
+								<option value="7">7 - P.P.C</option>
+								<option value="8">8 - N.E  </option>
+								<option value="9">9 - N.R  </option>
+								<option value="T">T - T    </option>
+								</select>
+								<label>Dente 41</label>
+							</div>
+							
+							<div class="input-field col s1">
+								<select id="dente31">
+								<option value="0">0 - H    </option>     
+								<option value="1">1 - C    </option>
+								<option value="2">2 - R.C.C</option>
+								<option value="3">3 - R.S.C</option>
+								<option value="4">4 - A.D.C</option>
+								<option value="5">5 - A.O.C</option>
+								<option value="6">6 - S    </option>
+								<option value="7">7 - P.P.C</option>
+								<option value="8">8 - N.E  </option>
+								<option value="9">9 - N.R  </option>
+								<option value="T">T - T    </option>
+								</select>
+								<label>Dente 31</label>
+							</div>
+							
+							<div class="input-field col s1">
+								<select id="dente32">
+								<option value="0">0 - H    </option>     
+								<option value="1">1 - C    </option>
+								<option value="2">2 - R.C.C</option>
+								<option value="3">3 - R.S.C</option>
+								<option value="4">4 - A.D.C</option>
+								<option value="5">5 - A.O.C</option>
+								<option value="6">6 - S    </option>
+								<option value="7">7 - P.P.C</option>
+								<option value="8">8 - N.E  </option>
+								<option value="9">9 - N.R  </option>
+								<option value="T">T - T    </option>
+								</select>
+								<label>Dente 32</label>
+							</div>
+							
+							<div class="input-field col s1">
+								<select id="dente33">
+								<option value="0">0 - H    </option>     
+								<option value="1">1 - C    </option>
+								<option value="2">2 - R.C.C</option>
+								<option value="3">3 - R.S.C</option>
+								<option value="4">4 - A.D.C</option>
+								<option value="5">5 - A.O.C</option>
+								<option value="6">6 - S    </option>
+								<option value="7">7 - P.P.C</option>
+								<option value="8">8 - N.E  </option>
+								<option value="9">9 - N.R  </option>
+								<option value="T">T - T    </option>
+								</select>
+								<label>Dente 33</label>
+							</div>
+							
+							<div class="input-field col s1">
+								<select id="dente34">
+								<option value="0">0 - H    </option>     
+								<option value="1">1 - C    </option>
+								<option value="2">2 - R.C.C</option>
+								<option value="3">3 - R.S.C</option>
+								<option value="4">4 - A.D.C</option>
+								<option value="5">5 - A.O.C</option>
+								<option value="6">6 - S    </option>
+								<option value="7">7 - P.P.C</option>
+								<option value="8">8 - N.E  </option>
+								<option value="9">9 - N.R  </option>
+								<option value="T">T - T    </option>
+								</select>
+								<label>Dente 34</label>
+							</div>
+							
+							
+							<div class="input-field col s1">
+								<select id="dente35">
+								<option value="0">0 - H    </option>     
+								<option value="1">1 - C    </option>
+								<option value="2">2 - R.C.C</option>
+								<option value="3">3 - R.S.C</option>
+								<option value="4">4 - A.D.C</option>
+								<option value="5">5 - A.O.C</option>
+								<option value="6">6 - S    </option>
+								<option value="7">7 - P.P.C</option>
+								<option value="8">8 - N.E  </option>
+								<option value="9">9 - N.R  </option>
+								<option value="T">T - T    </option>
+								</select>
+								<label>Dente 35</label>
+							</div>
+							
+							
+							<div class="input-field col s1">
+								<select id="dente36">
+								<option value="0">0 - H    </option>     
+								<option value="1">1 - C    </option>
+								<option value="2">2 - R.C.C</option>
+								<option value="3">3 - R.S.C</option>
+								<option value="4">4 - A.D.C</option>
+								<option value="5">5 - A.O.C</option>
+								<option value="6">6 - S    </option>
+								<option value="7">7 - P.P.C</option>
+								<option value="8">8 - N.E  </option>
+								<option value="9">9 - N.R  </option>
+								<option value="T">T - T    </option>
+								</select>
+								<label>Dente 36</label>
+							</div>
+							
+						</div>
+						
+						<!-- 17 27-->
+						<div class="row">
+							<div class="input-field col s1">
+								<select id="dente47">
+								<option value="0">0 - H    </option>     
+								<option value="1">1 - C    </option>
+								<option value="2">2 - R.C.C</option>
+								<option value="3">3 - R.S.C</option>
+								<option value="4">4 - A.D.C</option>
+								<option value="5">5 - A.O.C</option>
+								<option value="6">6 - S    </option>
+								<option value="7">7 - P.P.C</option>
+								<option value="8">8 - N.E  </option>
+								<option value="9">9 - N.R  </option>
+								<option value="T">T - T    </option>
+								</select>
+								<label>Dente 47</label>
+							</div>
+							
+							<div class="col s10">
+							</div>
+							
+							<div class="input-field col s1">
+								<select id="dente37">
+								<option value="0">0 - H    </option>     
+								<option value="1">1 - C    </option>
+								<option value="2">2 - R.C.C</option>
+								<option value="3">3 - R.S.C</option>
+								<option value="4">4 - A.D.C</option>
+								<option value="5">5 - A.O.C</option>
+								<option value="6">6 - S    </option>
+								<option value="7">7 - P.P.C</option>
+								<option value="8">8 - N.E  </option>
+								<option value="9">9 - N.R  </option>
+								<option value="T">T - T    </option>
+								</select>
+								<label>Dente 37</label>
+							</div>
+						</div>
+						
+						
+					</div>	
+						
+					
+						 
+					</div>
+
+				</div>	
+
+				
+				<!-- BOTOES-->
+				<div class="row ">
+					<div class="col s2">
+					</div >
+					
+					<div class="col s3">
+						<button class="waves-effect waves-light btn" onclick="novoAluno()"> Novo </button>
+					</div>
+					<div class="col s3">
+						<button class="waves-effect waves-light btn" onclick="atualizaAluno()"> Editar </button>
+					</div>
+					<div class="col s3">
+						<button class="waves-effect waves-light btn" onclick="excluiAluno()"> Excluir </button>
+						
+					</div>
+				</div>
+							
+			
+				<!-- lISTA DE aLUNOS-->
+				<div class="row">
+					<div class="col s12 boxformulario ">
+						<div class="col s12 ">
+							<h5 class="center-align"> Lista de Alunos </h5>
+											
+							
+							<div id="listaAlunos"> 	 </div>
+						</div>
+					</div>
+				</div>
+			
+		
+		
+		
+	<!-- deixa isso queto -->
+	<script src="js/jquery-3.2.1.js"></script>
+	<script src="js/materialize.js"></script>
+	</BODY>
+</HTML>
+
