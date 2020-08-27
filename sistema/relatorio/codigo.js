@@ -7,6 +7,8 @@ function criarAbrirBanco() {
 
 	montaComboEscola();
 	montaComboTurma();
+
+	
 		
 }
 
@@ -20,30 +22,34 @@ function criarAbrirBanco2() {
 
 
 
-
-function ExecutaPesquisar() {
+function ExecutaPesquisarART() {
 	PesquisarART();
-	PesquisarQTDEProcedimento();
-	PesquisarCPOCEO();
-}
-
-
-function ExecutaPesquisar2() {
-	PesquisarCPOCEO();
 }
 
 function ExecutaPesquisarPorEscola() {
 	PesquisarPorEscola();
 }
 
+function ExecutaPesquisarPorTurma() {
+	//PesquisarART();
+	PesquisarPorTurma();
+}
+
+function ExecutaPesquisarPorAluno() {
+	PesquisarPorAlunos();
+}
+
+
 function PesquisarART() {
 	banco.transaction(function (tx) {
 		tx.executeSql(' '+
 					  ' select ALUNOS,                                                           '+
                       ' (select count(LANC.rowid) from TLancamento LANC join TAluno ALU on (ALU.IdAluno = LANC.IdAluno) WHERE LANC.IdProcedimento1 = 9 and ALU.Turma = T.IdTurma) as qtdeProcedimentoArtExecutado,  ' +
-					  '					  E.Descricao as NomeEscola,                             '+
+					  
+					 
+					  '		   E.Descricao || " / " || E.Ano as NomeEscola,                             '+
 					//  '        count(L.rowid) as qtdeProcedimentoArtExecutado,                   '+
-					  ' 	   T.Descricao    as NomeTurma,                                      '+
+					  ' 	   T.Descricao || " / " || T.Ano  as NomeTurma,                                      '+
 					  ' 	   sum(cpo) as somaCOP, sum(art0) as numeroNecessarioARTCOP,         '+
 					  '        sum(ceo) as somaCEO, sum(art1) as numeroNecessarioARTCEO          '+
 					  '   from TAluno as A left join TTurma      T on (A.Turma    = T.IdTurma)   '+
@@ -71,8 +77,8 @@ function PesquisarART() {
 			cabecalho = ' <h5 class="center-align"> Relatorios de Necessidade de ART | ART Realizados | Divididos por Turmas </h5>' +
 						' <table class="bordered striped highlight">' +
 			            ' <tr>                                      ' + 
-						'	<th class="">Escola</th>                ' +
-						'	<th class="">Turma</th>                 ' +
+						'	<th class="">Escola/Ano</th>                ' +
+						'	<th class="">Turma/Ano</th>                 ' +
 						'	<th class="">CPO</th>                   ' +
 						'	<th class="">CPO Necessario</th>        ' +
 						'	<th class="">CEO</th>                   ' +
@@ -107,9 +113,9 @@ function PesquisarART() {
 	});
 }
 
-function PesquisarQTDEProcedimento() {
+function PesquisarPorTurma() {
 	banco.transaction(function (tx) {
-		tx.executeSql(  ' Select T.Descricao Turma, E.Descricao Escola, P.Descricao Procedimento, Count(IdProcedimento1) as QTDE      '+
+		tx.executeSql(  ' Select T.Descricao || "/" || T.Ano as Turma, E.Descricao || "/" || E.Ano as Escola, P.Descricao Procedimento, Count(IdProcedimento1) as QTDE      '+
 						' From TLancamento L left join TProcedimento P on (P.IdProcedimento = L.IdProcedimento1)  '+
 						 					'left join TAluno        A on (A.IdAluno        = L.IdAluno)          '+
 						 					'left join TTurma        T on (T.IdTurma        = A.Turma)	          '+
@@ -135,8 +141,8 @@ function PesquisarQTDEProcedimento() {
 			cabecalho = ' <h5 class="center-align"> Relatorios de Procedimentos Executados por Turma </h5>' +
 						' <table class="bordered striped highlight">' +
 			            ' <tr>                                      ' + 
-						'	<th class="">Escola</th>                ' +
-						'	<th class="">Turma</th>                ' +
+						'	<th class="">Escola/Ano</th>                ' +
+						'	<th class="">Turma/Ano</th>                ' +
 						'	<th class="">Procedimento</th>                 ' +
 						'	<th class="">Qtde</th>                   ' +
 					
@@ -172,7 +178,7 @@ Serão utilizadas as variáveis referentes aos índices de ceo-d e CPO-D,
 alunos atendidos, aplicação tópica de flúor, atividade educativa, 
 escovação supervisionada, índice de ART necessários e concluídos e faltas.
  */
-function PesquisarCPOCEO() {
+function PesquisarPorAlunos() {
 	banco.transaction(function (tx) {
 		where = '';
 		
@@ -198,7 +204,7 @@ function PesquisarCPOCEO() {
 			' '+
 			'Select L.*,                             ' +
 			'       P.Descricao as NomeProcedimento, ' +
-			'       T.Descricao as NomeTurma,        ' +
+			'       T.Descricao || "/" || T.Ano as NomeTurma,        ' +
 
 			'       (select count(LANC.rowid) from TLancamento LANC join TAluno ALU on (ALU.IdAluno = LANC.IdAluno)     ' +
 			'        WHERE ALU.IdAluno = A.IdAluno and LANC.IdProcedimento1 = 1)   as naoRealizado,                     ' + 
@@ -233,7 +239,9 @@ function PesquisarCPOCEO() {
 			'       (select count(LANC.rowid) from TLancamento LANC join TAluno ALU on (ALU.IdAluno = LANC.IdAluno)     ' +
 			'        WHERE ALU.IdAluno = A.IdAluno and LANC.IdProcedimento1 = 11)   as naoCompareceu,                   ' + 
             '                                                                                                           ' +
-			
+			'       (select count(LANC.rowid) from TLancamento LANC join TAluno ALU on (ALU.IdAluno = LANC.IdAluno)     ' +
+			'        WHERE ALU.IdAluno = A.IdAluno and LANC.IdProcedimento1 = 12)   as transferido,                     ' + 
+            '                                                                                                           ' +
 			
 			'       A.ALUNOS                         ' +
 			'From TAluno        A                      ' +
@@ -262,7 +270,7 @@ function PesquisarCPOCEO() {
 			cabecalho = ' <h5 class="center-align"> Relatorios de Procedimentos Executados Por Alunos </h5>' +
 						' <table class="bordered striped highlight">' +
 			            ' <tr>                                      ' + 
-						'	<th class="">Turma</th>                 ' +
+						'	<th class="">Turma/Ano</th>                 ' +
 						'	<th class="">Aluno</th>                 ' +
 						'	<th class="">Não Realizado</th>     ' +
 						'	<th class="">Concluido</th>     ' +
@@ -275,6 +283,11 @@ function PesquisarCPOCEO() {
 						'	<th class="">ART</th>     ' +
 						'	<th class="">Exame</th>     ' +
 						'	<th class="">Nao Compareceu</th>     ' +
+						'	<th class="">Transferido</th>     ' +
+
+
+						
+
 						' </tr>                                     ';
 			rodape = '</table>';
 			
@@ -300,6 +313,7 @@ function PesquisarCPOCEO() {
 							  '<td class="">' + item['ART']  +' </td>    ' +
 							  '<td class="">' + item['exame']  +' </td>    ' +
 							  '<td class="">' + item['naoCompareceu']  +' </td>    ' +
+							  '<td class="">' + item['transferido']  +' </td>    ' +
 
 
 							  '</tr>                                                  ';
@@ -363,7 +377,10 @@ function PesquisarPorEscola() {
 			'        WHERE Tur.IdEscola = E.IdEscola and LANC.IdProcedimento1 = 10)   as exame,                           ' + 
 			'                                                                                                           ' +
 			'       (select count(LANC.rowid) from TLancamento LANC join TAluno ALU on (ALU.IdAluno = LANC.IdAluno) Left Join TTurma  Tur on (Tur.IdTurma        = ALU.Turma)     ' +
-			'        WHERE Tur.IdEscola = E.IdEscola and LANC.IdProcedimento1 = 11)   as naoCompareceu                   ' + 
+			'        WHERE Tur.IdEscola = E.IdEscola and LANC.IdProcedimento1 = 11)   as naoCompareceu,                   ' + 
+            '                                                                                                           ' + 
+			'       (select count(LANC.rowid) from TLancamento LANC join TAluno ALU on (ALU.IdAluno = LANC.IdAluno) Left Join TTurma  Tur on (Tur.IdTurma        = ALU.Turma)     ' +
+			'        WHERE Tur.IdEscola = E.IdEscola and LANC.IdProcedimento1 = 12)   as transferido                    ' + 
             '                                                                                                           ' + 
 			
 			
@@ -393,7 +410,7 @@ function PesquisarPorEscola() {
 			cabecalho = ' <h5 class="center-align"> Relatorios de Procedimentos Executados Por Escola </h5>' +
 						' <table class="bordered striped highlight">' +
 			            ' <tr>                                      ' + 
-						'	<th class="">Escola</th>                 ' +
+						'	<th class="">Escola/Ano</th>                 ' +
 						'	<th class="">Não Realizado</th>     ' +
 						'	<th class="">Concluido</th>     ' +
 						'	<th class="">Edu. em Saúde</th>     ' +
@@ -405,6 +422,9 @@ function PesquisarPorEscola() {
 						'	<th class="">ART</th>     ' +
 						'	<th class="">Exame</th>     ' +
 						'	<th class="">Nao Compareceu</th>     ' +
+						'	<th class="">Transferido</th>     ' +
+
+						
 						' </tr>                                     ';
 			rodape = '</table>';
 			
@@ -416,7 +436,7 @@ function PesquisarPorEscola() {
 				
 				
 				linhas = linhas + '<tr>' +
-							  '<td class="">' + item['Descricao']                   +' </td>    ' +
+							  '<td class="">' + item['Descricao'] + " / "  + item['Ano']                +' </td>    ' +
 							 
 							  '<td class="">' + item['naoRealizado']  +' </td>    ' +
 							  '<td class="">' + item['concluido']  +' </td>    ' +
@@ -429,6 +449,7 @@ function PesquisarPorEscola() {
 							  '<td class="">' + item['ART']  +' </td>    ' +
 							  '<td class="">' + item['exame']  +' </td>    ' +
 							  '<td class="">' + item['naoCompareceu']  +' </td>    ' +
+							  '<td class="">' + item['transferido']  +' </td>    ' +
 
 
 							  '</tr>                                                  ';

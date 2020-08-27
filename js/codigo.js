@@ -1,6 +1,14 @@
 var banco; //global
 
 
+
+
+
+function criarAbrir() {
+	$(".dropdown-trigger").dropdown();
+}
+
+
 function seDerErro(tx, error) {	
 	M.toast({html: 'Ocorreu o seguinte erro: ('+ error.message + ')! Verificar erro antes de continuar!'  , classes: "rounded red darken-4"})	
 }
@@ -70,6 +78,8 @@ function MontaHome(){
 	Frame.setAttribute('width', '100%');
 	Frame.setAttribute('height','750');
 
+	$(".dropdown-trigger").dropdown();
+
 }
 
 
@@ -120,28 +130,37 @@ function MontaFrameEscola(){
 }
 
 
-function MontaFrameRelatorio(){
+function MontaFrameRelatorioART(){
 	var Frame = document.getElementById('FramePrincipal');
 	  
-    Frame.setAttribute('src','sistema/relatorio/relatorio.html'); 
+    Frame.setAttribute('src','sistema/relatorio/relatorioART.html'); 
 	Frame.setAttribute('width', '100%');
 	Frame.setAttribute('height','750');
 
 }
 
-function MontaFrameRelatorioPorTurma(){
+function MontaFrameRelatorioProcedimentoPorEscola(){
 	var Frame = document.getElementById('FramePrincipal');
 	  
-    Frame.setAttribute('src','sistema/relatorio/relatorioCPOCEO.html'); 
+    Frame.setAttribute('src','sistema/relatorio/relatorioProcedimentoPorEscola.html'); 
 	Frame.setAttribute('width', '100%');
 	Frame.setAttribute('height','750');
 
 }
 
-function MontaFrameRelatorioPorEscola(){
+function MontaFrameRelatorioProcedimentoPorTurma(){
 	var Frame = document.getElementById('FramePrincipal');
 	  
-    Frame.setAttribute('src','sistema/relatorio/relatorioPorEscola.html'); 
+    Frame.setAttribute('src','sistema/relatorio/relatorioProcedimentoPorTurma.html'); 
+	Frame.setAttribute('width', '100%');
+	Frame.setAttribute('height','750');
+
+}
+
+function MontaFrameRelatorioProcedimentoPorAluno(){
+	var Frame = document.getElementById('FramePrincipal');
+	  
+    Frame.setAttribute('src','sistema/relatorio/relatorioProcedimentoPorAluno.html'); 
 	Frame.setAttribute('width', '100%');
 	Frame.setAttribute('height','750');
 

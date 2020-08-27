@@ -14,7 +14,7 @@
 		<script type="text/javascript" src="js/codigo.js"></script>
 		
 	</HEAD>
-	<BODY onload="criarAbrirBanco()">
+	<BODY onload="criarAbrir()">
    	
 	<div id="geral" class="geral"> 
 		
@@ -22,7 +22,18 @@
 	
 	</div>
 		
-	
+	<ul id="dropdown1" class="dropdown-content">
+		<li><a class="waves-effect waves-light" onclick="MontaFrameRelatorioART()">Relatorio de ART's</a></li>
+		<li class="divider"></li>
+		<li><a class="waves-effect waves-light" onclick="MontaFrameRelatorioProcedimentoPorEscola()">Relatorio de Procedimentos Por Escola</a></li>
+		<li class="divider"></li>
+		<li><a class="waves-effect waves-light" onclick="MontaFrameRelatorioProcedimentoPorTurma()">Relatorio de Procedimentos Por Turma</a></li>
+		<li class="divider"></li>
+		<li><a class="waves-effect waves-light" onclick="MontaFrameRelatorioProcedimentoPorAluno()">Relatorio de Procedimentos Por Escola</a></li>
+
+		<li class="divider"></li>
+
+	</ul>
 	
 	
 	<nav>
@@ -38,9 +49,9 @@
 			<li><a class="waves-effect waves-light btn" onclick="MontaFrameProcedimentos()" >Procedimentos</a></li>
 			<li><a class="waves-effect waves-light btn" onclick="MontaFrameAluno()">Alunos</a></li>
 			<li><a class="waves-effect waves-light btn" onclick="MontaFrameLancamentos()">Lançamentos</a></li>
-			<li><a class="waves-effect waves-light btn" onclick="MontaFrameRelatorio()">Relatorio</a></li>
-			<li><a class="waves-effect waves-light btn" onclick="MontaFrameRelatorioPorTurma()">Relatorio Por Turma</a></li>
-			<li><a class="waves-effect waves-light btn" onclick="MontaFrameRelatorioPorEscola()">Relatorio Por Escola</a></li>
+
+			<li><a class="dropdown-trigger btn" href="#!" data-target="dropdown1">Relatórios<i class="material-icons right">arrow_drop_down</i></a></li>
+
 			
 		</ul>
 		</div>
