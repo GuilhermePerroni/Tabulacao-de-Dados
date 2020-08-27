@@ -30,9 +30,17 @@
 		<li><a class="waves-effect waves-light" onclick="MontaFrameRelatorioProcedimentoPorTurma()">Relatorio de Procedimentos Por Turma</a></li>
 		<li class="divider"></li>
 		<li><a class="waves-effect waves-light" onclick="MontaFrameRelatorioProcedimentoPorAluno()">Relatorio de Procedimentos Por Aluno</a></li>
-
 		<li class="divider"></li>
+	</ul>
 
+	<ul id="dropdown2" class="dropdown-content">
+		<li><a class="waves-effect waves-light " onclick="MontaFrameEscola()" >Escolas</a></li>
+		<li class="divider"></li>
+		<li><a class="waves-effect waves-light " onclick="MontaFrameTurma()" >Turmas</a></li>
+		<li class="divider"></li>
+		<li><a class="waves-effect waves-light " onclick="MontaFrameAluno()">Alunos</a></li>
+		<li class="divider"></li>
+		
 	</ul>
 	
 	
@@ -44,12 +52,9 @@
 			
 			
 			<li><a class="waves-effect waves-light btn" onclick="MontaHome()" >Início</a></li>
-			<li><a class="waves-effect waves-light btn" onclick="MontaFrameEscola()" >Escolas</a></li>
-			<li><a class="waves-effect waves-light btn" onclick="MontaFrameTurma()" >Turmas</a></li>
 			<li><a class="waves-effect waves-light btn" onclick="MontaFrameProcedimentos()" >Procedimentos</a></li>
-			<li><a class="waves-effect waves-light btn" onclick="MontaFrameAluno()">Alunos</a></li>
+			<li><a class="dropdown-trigger btn" href="#!" data-target="dropdown2">Cadastros<i class="material-icons right">arrow_drop_down</i></a></li>
 			<li><a class="waves-effect waves-light btn" onclick="MontaFrameLancamentos()">Lançamentos</a></li>
-
 			<li><a class="dropdown-trigger btn" href="#!" data-target="dropdown1">Relatórios<i class="material-icons right">arrow_drop_down</i></a></li>
 
 			
