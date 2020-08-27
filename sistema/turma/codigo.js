@@ -249,7 +249,7 @@ function montaComboEscola() {
 				item = results.rows.item(i);
 				
 				
-			corpo =  corpo + ' <option value="' + item['IdEscola'] + '">' + item['Descricao'] + ' </option> ';
+			corpo =  corpo + ' <option value="' + item['IdEscola'] + '">' + item['Descricao'] +" / Ano: "+ item['Ano'] + ' </option> ';
 					
 			}
 			

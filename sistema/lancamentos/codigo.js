@@ -539,7 +539,7 @@ function montaComboTurma() {
 				item = results.rows.item(i);
 				
 				
-			corpo =  corpo + ' <option value="' + item['IdTurma'] + '">' + item['Descricao'] + ' </option> ';
+			corpo =  corpo + ' <option value="' + item['IdTurma'] + '">' + item['Descricao'] + " / Ano: "+ item['Ano'] + ' </option> ';
 					
 			}
 			
@@ -595,7 +595,7 @@ function montaComboEscola() {
 				item = results.rows.item(i);
 				
 				
-			corpo =  corpo + ' <option value="' + item['IdEscola'] + '">' + item['Descricao'] + ' </option> ';
+			corpo =  corpo + ' <option value="' + item['IdEscola'] + '">' + item['Descricao'] + " / Ano: "+ item['Ano'] + ' </option> ';
 					
 			}
 			
