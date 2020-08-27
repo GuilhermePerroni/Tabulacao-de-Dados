@@ -129,6 +129,25 @@ function MontaFrameRelatorio(){
 
 }
 
+function MontaFrameRelatorioPorTurma(){
+	var Frame = document.getElementById('FramePrincipal');
+	  
+    Frame.setAttribute('src','sistema/relatorio/relatorioCPOCEO.html'); 
+	Frame.setAttribute('width', '100%');
+	Frame.setAttribute('height','750');
+
+}
+
+function MontaFrameRelatorioPorEscola(){
+	var Frame = document.getElementById('FramePrincipal');
+	  
+    Frame.setAttribute('src','sistema/relatorio/relatorioPorEscola.html'); 
+	Frame.setAttribute('width', '100%');
+	Frame.setAttribute('height','750');
+
+}
+
+
 
 
 
